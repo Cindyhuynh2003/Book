@@ -1,0 +1,137 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"> </script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+<link rel="stylesheet" href="./../stylesheets/style.css">
+
+<!-- menu -->
+<section id="header_section">
+  <h4><a href="/"><img
+        src="https://github.com/tech2etc/Build-and-Deploy-Ecommerce-Website/blob/main/img/logo.png?raw=true"
+        alt="sdfghjk"></a></h4>
+  <div>
+    <ul id="navbar">
+      <a href="#" id="close"> <i class="far fa-times"></i></a>
+      <li><a href="http://localhost:3000/" >Home</a></li>
+      <li class="dropdown">
+        <a class="dropbtn active" href="http://localhost:3000/shop">Shop</a>
+        <div class="dropdown-content">
+            <a href="http://localhost:3000/loai/1">Văn Học</a>
+            <a href="http://localhost:3000/loai/2">Kinh Tế</a>
+            <a href="http://localhost:3000/loai/3">Tâm Lý - Kĩ Năng Sống</a>
+            <a href="http://localhost:3000/loai/4">Nuôi Dậy Con</a>
+            <a href="http://localhost:3000/loai/5">Sách Thiếu Nhi</a>
+            <a href="http://localhost:3000/loai/6">Tiểu Sử - Hồi Ký</a>
+            <a href="http://localhost:3000/loai/7">Sách Giáo Khoa - Tham Khảo</a>
+            <a href="http://localhost:3000/loai/8">Sách Học Ngoại Ngữ</a>
+        </div>
+      </li>
+      <li><a href="">Blog</a></li>
+      <li><a href="">About</a></li>
+      <li><a href="">Contact</a></li>
+      <li><a href="">
+          <img style="width: 30px;" src="./../images/avt3.png" alt="hihi"></a></li>
+      <li id="lg-bag"><a href=""><i class="bi-cart-x-fill" aria-hidden="true"></i></a>
+      </li>
+      </li>
+    </ul>
+  </div>
+</section>
+<!-- end menu -->
+<!-- thong tin chinh -->
+<section id="page-header">
+  <h2>Stay Home</h2>
+  <p>NHIỀU KHUYẾN MÃI VÀ ƯU ĐÃI LÊN TỚI <span style="color: red;font-size:30px; font-weight: 700;">70%</span> </p>
+</section>
+<!-- end thong tin chính -->
+<section id="product1" class="section-p1">
+  <h2>Sách Phân Theo Loại</h2>
+  <div class="pro-container" id="sptheoloai">
+    <script>
+      fetch("http://localhost:3000/sach/loai/<%=id%>")
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          document.getElementById("sptheoloai");
+          data.forEach(sp => {
+            sptheoloai.innerHTML += `
+            <div class="pro">
+              <a href="/${sp.idSach}">
+                  <img src="./../${sp.urlHinh}" alt="">
+              </a>
+              <div class="des">
+                  <a href="/book/${sp.idSach}"> <h5> ${sp.tenSach}</h5></a>
+                  <h4> ${sp.gia.toLocaleString('vi')} <sup>đ</sup></h4>
+              </div>
+              <a href="/sach/${sp.idSach}" class="cart">
+                <i class="bi-cart-x-fill" aria-hidden="true"></i>
+              </a>
+            </div>
+            `;
+          });
+        })
+    </script>
+  </div>
+</section>
+
+<section id="newsletter" class="section-p1 section-m1">
+  <div class="newstext">
+    <h4>Sign up for newsletter</h4>
+    <p>Get E-mail Update about our latest shop <span>special offer</span> </p>
+  </div>
+  <div class="form">
+    <input type="text" placeholder="Your email address">
+    <button class="normal">Sign Up</button>
+  </div>
+</section>
+<footer class="section-p1">
+  <div class="col">
+    <img class="logo"
+      src="https://github.com/tech2etc/Build-and-Deploy-Ecommerce-Website/blob/main/img/logo.png?raw=true" alt="">
+    <h4>Contact</h4>
+    <p><strong>Address:</strong> 50 lê thị hồng, phường 17, quận gò Vấp, TP.HCM</p>
+    <p><strong>Phone</strong> 0987654321</p>
+    <p><strong>Hour:</strong> 10:00 - 18:00, Mon - Sat</p>
+    <div class="follow">
+      <h4>Follow Us</h4>
+      <div class="icon">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-pinterest-p"></i>
+        <i class="fab fa-youtube"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <h4>About</h4>
+    <a href="">About</a>
+    <a href="">Delivery Information</a>
+    <a href="">Privacy Policy</a>
+    <a href="">Terms & Conditions</a>
+    <a href="">Contact Us</a>
+  </div>
+  <div class="col">
+    <h4>My Account</h4>
+    <a href="">Sign in</a>
+    <a href="">View Cart</a>
+    <a href="">My Wishlist</a>
+    <a href="">Track My Order</a>
+    <a href="">Help</a>
+  </div>
+  <div class="col install">
+    <h4>Install app</h4>
+    <p>From App Store or Google Play</p>
+    <div class="row">
+      <img src="https://github.com/tech2etc/Build-and-Deploy-Ecommerce-Website/blob/main/img/pay/app.jpg?raw=true"
+        alt="">
+      <img src="https://github.com/tech2etc/Build-and-Deploy-Ecommerce-Website/blob/main/img/pay/play.jpg?raw=true"
+        alt="">
+    </div>
+    <p>Secured Payment Gateways</p>
+    <img src="https://github.com/tech2etc/Build-and-Deploy-Ecommerce-Website/blob/main/img/pay/pay.png?raw=true" alt="">
+  </div>
+  <div class="copyright">
+    <p>© Cửa Hàng Sách Mini
+    </p>
+  </div>
+</footer>
